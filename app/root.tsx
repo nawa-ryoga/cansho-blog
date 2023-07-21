@@ -1,9 +1,11 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import styles from "./tailwind.css";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: styles },
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png", type: "image/png" },
   { rel: "icon", sizes: "32x32", href: "/icon.svg", type: "image/svg+xml" },
 ];
