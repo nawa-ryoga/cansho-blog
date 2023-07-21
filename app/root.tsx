@@ -13,7 +13,10 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   return (
-    <html lang="ja">
+    <html
+      lang="ja"
+      className="bg-background-default"
+    >
       <head>
         <meta charSet="utf-8" />
         <meta
@@ -23,7 +26,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-background-default text-font-default tracking-wider text-sm sm:text-base">
+      <body className="text-font-default tracking-wider text-sm sm:text-base">
         <Layouts>
           <Outlet />
         </Layouts>
