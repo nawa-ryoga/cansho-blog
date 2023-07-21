@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useMatches } from "@remix-run/react";
 import { Link } from "@remix-run/react";
 
@@ -19,6 +20,26 @@ export default function Layouts({ children }: Props) {
     }
   };
 
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [nowPage, setNowPage] = useState("");
+
+  const toggleLoadedStatus = () => {
+    setIsLoaded(true);
+    setTimeout(() => {
+      setIsLoaded(false);
+    }, 200);
+  };
+
+  if (nowPage !== pathname) {
+    setNowPage(pathname);
+    toggleLoadedStatus();
+  }
+
+  useEffect(() => {
+    toggleLoadedStatus();
+    setNowPage(pathname);
+  }, []);
+
   return (
     <>
       <header
@@ -35,7 +56,9 @@ export default function Layouts({ children }: Props) {
               />
             </Link>
             <h1
-              className="text-lg sm:text-2xl header-slide tracking-header"
+              className={`text-lg sm:text-2xl header-slide tracking-header ${
+                isLoaded ? "loaded" : "loading"
+              }`}
               style={{ color: "white" }}
             >
               {headingTitle()}

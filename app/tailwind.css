@@ -40,6 +40,6 @@
   }
 }
 
-.header-slide {
+.header-slide.loaded {
   animation: slide-in 0.4s ease;
 }
