@@ -28,3 +28,18 @@
     min-height: calc(100vh - var(--header-height));
   }
 }
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.header-slide {
+  animation: slide-in 0.4s ease;
+}

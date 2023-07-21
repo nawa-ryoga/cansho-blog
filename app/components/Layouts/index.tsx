@@ -31,7 +31,7 @@ export default function Layouts({ children }: Props) {
             className="w-10 h-10 sm:w-20 sm:h-20"
           />
           <h1
-            className="text-lg sm:text-2xl tracking-header"
+            className="text-lg sm:text-2xl tracking-header header-slide"
             style={{ color: "white" }}
           >
             {headingTitle()}
