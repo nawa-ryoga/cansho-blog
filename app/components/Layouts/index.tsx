@@ -1,9 +1,23 @@
+import { useMatches } from "@remix-run/react";
+
 type Props = {
   children: React.ReactNode;
 };
 
 export default function Layouts({ children }: Props) {
   const now = new Date();
+  const matchs = useMatches();
+  const { pathname } = matchs[1];
+
+  const headingTitle = () => {
+    switch (pathname) {
+      case "/":
+        return "CANSHO";
+      case "/about":
+        return "ABOUT";
+    }
+  };
+
   return (
     <>
       <header
@@ -20,7 +34,7 @@ export default function Layouts({ children }: Props) {
             className="text-lg sm:text-2xl tracking-header"
             style={{ color: "white" }}
           >
-            CANSHO
+            {headingTitle()}
           </h1>
         </div>
       </header>
