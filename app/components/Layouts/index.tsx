@@ -70,7 +70,7 @@ export default function Layouts({ children }: Props) {
                 <p className="tracking-header">ABOUT</p>
               </Link>
             )}
-            {pathname !== "/" && (
+            {pathname === "/about" && (
               <Link to={"/"}>
                 <p className="tracking-header">TOP</p>
               </Link>
