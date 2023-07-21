@@ -28,7 +28,7 @@ export default function Layouts({ children }: Props) {
           <img
             src="/icon.svg"
             alt=""
-            className="w-20 h-20 sm:w-40 sm:h-40"
+            className="w-10 h-10 sm:w-20 sm:h-20"
           />
           <h1
             className="text-lg sm:text-2xl tracking-header"
