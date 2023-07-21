@@ -2,6 +2,7 @@ import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import styles from "./tailwind.css";
+import Layouts from "./components/Layouts";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -12,15 +13,20 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   return (
-    <html lang='ja'>
+    <html lang="ja">
       <head>
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1"
+        />
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className="bg-background-default text-font-default tracking-wider text-sm sm:text-base">
+        <Layouts>
+          <Outlet />
+        </Layouts>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

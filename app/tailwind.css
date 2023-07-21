@@ -1,3 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --header-height: 112px; /* デフォルトの値 */
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-height: 192px; /* 640px以上の画面幅の場合の値 */
+  }
+}
+
+@layer base {
+  html,
+  body {
+    font-family:
+      "Roboto",
+      "Noto Sans JP" "sans-serif";
+  }
+
+  main {
+    min-height: calc(100vh - var(--header-height));
+  }
+}
