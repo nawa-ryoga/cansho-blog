@@ -7,9 +7,10 @@ export const meta: V2_MetaFunction = () => {
 export default function Index() {
   return (
     <div>
-      <h2 className="text-xl sm:text-2xl font-bold mb-4">映画を鑑賞したい</h2>
-      <p>自分が消費者、映画が商品だと割り切りたくない。</p>
-      <p>基本的にネタバレしています。</p>
+      <h2 className="text-xl sm:text-2xl font-bold mb-4">
+        鑑賞・・・芸術作品を理解し、味わうこと。
+      </h2>
+      <p>ブログを書くまでが映画鑑賞です。</p>
 
       <div className="mt-10 sm:mt-20">
         <ul>
