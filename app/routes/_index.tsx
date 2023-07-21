@@ -9,36 +9,45 @@ export default function Index() {
     <div>
       <h2 className="text-xl sm:text-2xl font-bold mb-4">映画を鑑賞したい</h2>
       <p>自分が消費者、映画が商品だと割り切りたくない。</p>
+      <p>基本的にネタバレしています。</p>
 
       <div className="mt-20">
         <ul>
-          <li className="flex mb-4">
-            <p className="mr-1">ブログのタイトル</p>
-            <p className="text-font-darken-1">Jun 22</p>
+          <li className="flex mb-4 group hover:text-white">
+            <p className="mr-1 transition duration-200">ブログのタイトル</p>
+            <p className="text-font-darken-1 group-hover:text-white transition duration-200">
+              Jun 22
+            </p>
           </li>
-          <li className="flex mb-4">
-            <p className="mr-1">ブログのタイトルだったりもする</p>
-            <p className="text-font-darken-1">Jun 22</p>
+          <li className="flex mb-4 group hover:text-white">
+            <p className="mr-1 transition duration-200">ブログのタイトル</p>
+            <p className="text-font-darken-1 group-hover:text-white transition duration-200">
+              Jun 22
+            </p>
           </li>
-          <li className="flex mb-4">
-            <p className="mr-1">ブログのタイトルなのか？</p>
-            <p className="text-font-darken-1">Jun 22</p>
+          <li className="flex mb-4 group hover:text-white">
+            <p className="mr-1 transition duration-200">ブログのタイトル</p>
+            <p className="text-font-darken-1 group-hover:text-white transition duration-200">
+              Jun 22
+            </p>
           </li>
-          <li className="flex mb-4">
-            <p className="mr-1">じつは、ブログのタイトル</p>
-            <p className="text-font-darken-1">Jun 22</p>
+          <li className="flex mb-4 group hover:text-white">
+            <p className="mr-1 transition duration-200">ブログのタイトル</p>
+            <p className="text-font-darken-1 group-hover:text-white transition duration-200">
+              Jun 22
+            </p>
           </li>
-          <li className="flex mb-4">
-            <p className="mr-1">ブログのタイトルだってばよ</p>
-            <p className="text-font-darken-1">Jun 22</p>
+          <li className="flex mb-4 group hover:text-white">
+            <p className="mr-1 transition duration-200">ブログのタイトル</p>
+            <p className="text-font-darken-1 group-hover:text-white transition duration-200">
+              Jun 22
+            </p>
           </li>
-          <li className="flex mb-4">
-            <p className="mr-1">ブログの、なんだっけ、ああタイトル</p>
-            <p className="text-font-darken-1">Jun 22</p>
-          </li>
-          <li className="flex mb-4">
-            <p className="mr-1">ブログのタイトルっていってた</p>
-            <p className="text-font-darken-1">Jun 22</p>
+          <li className="flex mb-4 group hover:text-white">
+            <p className="mr-1 transition duration-200">ブログのタイトル</p>
+            <p className="text-font-darken-1 group-hover:text-white transition duration-200">
+              Jun 22
+            </p>
           </li>
         </ul>
       </div>
