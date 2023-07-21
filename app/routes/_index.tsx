@@ -11,7 +11,7 @@ export default function Index() {
       <p>自分が消費者、映画が商品だと割り切りたくない。</p>
       <p>基本的にネタバレしています。</p>
 
-      <div className="mt-20">
+      <div className="mt-10 sm:mt-20">
         <ul>
           <li className="flex mb-4 group hover:text-white">
             <p className="mr-1 transition duration-200">ブログのタイトル</p>
