@@ -75,3 +75,17 @@ export const getBlogList = async (queries?: MicroCMSQueries) => {
 
   return listData;
 };
+
+export const getBlogDetail = async (contentId: string, queries?: MicroCMSQueries) => {
+  const detailData = await client
+    .getListDetail<Blog>({
+      endpoint: "blogs",
+      contentId,
+      queries,
+    })
+    .catch(() => {
+      throw new Error("記事データが取得できませんでした。");
+    });
+
+  return detailData;
+};
