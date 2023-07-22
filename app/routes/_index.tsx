@@ -6,13 +6,13 @@ export const meta: V2_MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div>
-      <h2 className="text-xl sm:text-2xl font-bold mb-4">
-        鑑賞・・・芸術作品を理解し、味わうこと（広辞苑）
+    <div className="mt-4 sm:mt-8">
+      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">
+        鑑賞：芸術作品を理解し、味わうこと（広辞苑）
       </h2>
-      <p>ブログを書くまでが映画鑑賞です。</p>
+      <p>ブログを書くまでが映画鑑賞だってこと。</p>
 
-      <div className="mt-10 sm:mt-20">
+      <div className="mt-10 sm:mt-14">
         <ul>
           <li className="flex mb-4 group hover:text-white">
             <p className="mr-1 transition duration-200">ブログのタイトル</p>
