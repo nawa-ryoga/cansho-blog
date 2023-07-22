@@ -10,6 +10,7 @@ export default {
           default: "#5B6BA2",
           darken: {
             1: "#4A5787",
+            2: "#374473",
           },
         },
         font: {
