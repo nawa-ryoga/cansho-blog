@@ -7,6 +7,7 @@ import PersonContainer from "../../parts/Movie/Person/Container";
 import PersonListHeader from "../../parts/Movie/Person/List/Header";
 import PersonListContainer from "../../parts/Movie/Person/List/Container";
 import PersonListGrid from "../../parts/Movie/Person/List/Grid";
+import ExternalLink from "~/components/Common/ExternalLink";
 
 type Props = {
   movie: MovieData;
@@ -93,6 +94,10 @@ export default function Movie({ movie }: Props) {
           </PersonListGrid>
         </PersonListContainer>
       </details>
+
+      <ExternalLink href={movie.tmdb_url}>
+        <figcaption className="text-xs sm:text-sm text-center text-font-darken-1">情報はTMDBより引用しています →</figcaption>
+      </ExternalLink>
     </figure>
   );
 }
