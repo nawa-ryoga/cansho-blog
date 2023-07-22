@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMatches } from "@remix-run/react";
 import { Link } from "@remix-run/react";
+import Title from "./parts/Title";
 
 type Props = {
   pageTitle: string;
@@ -31,46 +32,57 @@ export default function Header({ pageTitle }: Props) {
   }, []);
 
   return (
-    <header
-      className="font-zenKurenaido flex items-end"
-      style={{ height: "var(--header-height)" }}
-    >
-      <div className="w-full p-4">
-        <div className="mx-auto max-w-5xl flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Link to={"/"}>
-              <img
-                src="/icon.svg"
-                alt=""
-                className="w-10 h-10 sm:w-20 sm:h-20"
-              />
-            </Link>
-            <h1
-              className={`
-                text-lg sm:text-2xl header-slide 
-                ${pathname === "/" || pathname === "/about" ? "tracking-header" : ""} 
-                ${isLoaded ? "loaded" : "loading"}
-              `}
-              style={{ color: "white" }}
-            >
-              {pageTitle}
-            </h1>
+    <>
+      <header
+        className="font-zenKurenaido flex items-end"
+        style={{ minHeight: "var(--header-height)", height: "auto" }}
+      >
+        <div className="w-full px-4">
+          <div>
+            <div className="mx-auto max-w-5xl flex items-center justify-between">
+              <div className="sm:flex items-center gap-6">
+                <Link
+                  to={"/"}
+                  className="aspect-square"
+                >
+                  <img
+                    src="/icon.svg"
+                    alt=""
+                    className="w-6 h-6 sm:w-12 sm:h-12"
+                  />
+                </Link>
+                <Title
+                  display={`hidden sm:block`}
+                  isLoaded={isLoaded}
+                  pathname={pathname}
+                  pageTitle={pageTitle}
+                />
+              </div>
+              <div className="flex items-center">
+                {/* TODO: 呼び出し側から流し込む */}
+                {pathname === "/" && (
+                  <Link to={"/about"}>
+                    <p className="tracking-header">ABOUT</p>
+                  </Link>
+                )}
+                {pathname === "/about" && (
+                  <Link to={"/"}>
+                    <p className="tracking-header">TOP</p>
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
-          <div className="flex items-center">
-            {/* TODO: 呼び出し側から流し込む */}
-            {pathname === "/" && (
-              <Link to={"/about"}>
-                <p className="tracking-header">ABOUT</p>
-              </Link>
-            )}
-            {pathname === "/about" && (
-              <Link to={"/"}>
-                <p className="tracking-header">TOP</p>
-              </Link>
-            )}
+          <div className="pt-4">
+            <Title
+              display={`block sm:hidden`}
+              isLoaded={isLoaded}
+              pathname={pathname}
+              pageTitle={pageTitle}
+            />
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

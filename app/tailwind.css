@@ -7,7 +7,7 @@
 @tailwind utilities;
 
 :root {
-  --header-height: 92px; /* デフォルトの値 */
+  --header-height: 132px; /* デフォルトの値 */
 }
 
 @media (min-width: 640px) {
