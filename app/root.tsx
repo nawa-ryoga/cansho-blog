@@ -2,7 +2,6 @@ import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import styles from "./tailwind.css";
-import Layouts from "./components/Layouts";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -12,6 +11,8 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
+  const now = new Date();
+
   return (
     <html
       lang="ja"
@@ -27,9 +28,10 @@ export default function App() {
         <Links />
       </head>
       <body className="text-font-default tracking-wider text-sm sm:text-base">
-        <Layouts>
-          <Outlet />
-        </Layouts>
+        <Outlet />
+        <footer className="font-zenKurenaido text-center p-8 text-font-darken-1">
+          {`${now.getFullYear()} negami nenso`}
+        </footer>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
