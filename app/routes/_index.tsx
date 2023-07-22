@@ -1,5 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import type { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction, HeadersFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getBlogList } from "~/libs/micro-cms/client.server";
 import type { Blog } from "~/libs/micro-cms/client.server";
@@ -7,6 +7,12 @@ import { format } from "date-fns";
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: "CANSHO" }, { name: "description", content: "子上ねんその映画ブログ。" }];
+};
+
+export const headers: HeadersFunction = () => {
+  return {
+    "Cache-Control": "max-age=0, s-maxage=300, stale-while-revalidate=300",
+  };
 };
 
 export const loader: LoaderFunction = async () => {
