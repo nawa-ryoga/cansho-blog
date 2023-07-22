@@ -58,7 +58,7 @@ export default function Header({ pageTitle }: Props) {
                   pageTitle={pageTitle}
                 />
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center content-slide">
                 {/* TODO: 呼び出し側から流し込む */}
                 {pathname === "/" && (
                   <Link to={"/about"}>

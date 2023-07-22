@@ -106,5 +106,9 @@ export default function Content({ content, movies }: Props) {
     },
   };
 
-  return <article className="pt-8 sm:pt-16 pb-12 sm:pb-40">{parse(content, options)}</article>;
+  return (
+    <article className="content-slide pt-8 sm:pt-16 pb-12 sm:pb-40 content-slide">
+      {parse(content, options)}
+    </article>
+  );
 }
