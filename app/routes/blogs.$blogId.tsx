@@ -43,7 +43,6 @@ export default function BlogId() {
     <>
       <Header pageTitle={blog.title} />
       <Main>
-        {/* 映画情報は aside でラップする */}
         <Content
           content={blog.content}
           movies={movieDataList}
