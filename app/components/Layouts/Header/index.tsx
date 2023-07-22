@@ -52,7 +52,7 @@ export default function Header({ pageTitle }: Props) {
                   />
                 </Link>
                 <Title
-                  display={id === "routes/blogs.$blogId" ? `hidden sm:block` : `block sm:hidden`}
+                  display={id === "routes/blogs.$blogId" ? `hidden sm:block` : `block`}
                   isLoaded={isLoaded}
                   pathname={pathname}
                   pageTitle={pageTitle}
