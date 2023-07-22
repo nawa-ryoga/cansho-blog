@@ -9,7 +9,7 @@ type Props = {
 
 export default function Header({ pageTitle }: Props) {
   const matchs = useMatches();
-  const { pathname } = matchs[1];
+  const { pathname, id } = matchs[1];
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [nowPage, setNowPage] = useState("");
@@ -40,7 +40,7 @@ export default function Header({ pageTitle }: Props) {
         <div className="w-full px-4">
           <div>
             <div className="mx-auto max-w-3xl flex items-center justify-between">
-              <div className="sm:flex items-center gap-6">
+              <div className="flex items-center gap-6">
                 <Link
                   to={"/"}
                   className="aspect-square"
@@ -52,7 +52,7 @@ export default function Header({ pageTitle }: Props) {
                   />
                 </Link>
                 <Title
-                  display={`hidden sm:block`}
+                  display={id === "routes/blogs.$blogId" ? `hidden sm:block` : `block sm:hidden`}
                   isLoaded={isLoaded}
                   pathname={pathname}
                   pageTitle={pageTitle}
@@ -74,12 +74,14 @@ export default function Header({ pageTitle }: Props) {
             </div>
           </div>
           <div className="pt-4">
-            <Title
-              display={`block sm:hidden`}
-              isLoaded={isLoaded}
-              pathname={pathname}
-              pageTitle={pageTitle}
-            />
+            {id === "routes/blogs.$blogId" && (
+              <Title
+                display={`block sm:hidden`}
+                isLoaded={isLoaded}
+                pathname={pathname}
+                pageTitle={pageTitle}
+              />
+            )}
           </div>
         </div>
       </header>
