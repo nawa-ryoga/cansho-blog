@@ -46,35 +46,37 @@ export default function Layouts({ children }: Props) {
         className="font-zenKurenaido flex items-end"
         style={{ height: "var(--header-height)" }}
       >
-        <div className="w-full mx-auto p-4 flex items-center justify-between">
-          <div className="flex items-center max-w-6xl gap-2">
-            <Link to={"/"}>
-              <img
-                src="/icon.svg"
-                alt=""
-                className="w-10 h-10 sm:w-20 sm:h-20"
-              />
-            </Link>
-            <h1
-              className={`text-lg sm:text-2xl header-slide tracking-header ${
-                isLoaded ? "loaded" : "loading"
-              }`}
-              style={{ color: "white" }}
-            >
-              {headingTitle()}
-            </h1>
-          </div>
-          <div className="flex items-center">
-            {pathname !== "/about" && (
-              <Link to={"/about"}>
-                <p className="tracking-header">ABOUT</p>
-              </Link>
-            )}
-            {pathname === "/about" && (
+        <div className="w-full p-4">
+          <div className="mx-auto max-w-5xl flex items-center justify-between">
+            <div className="flex items-center gap-2">
               <Link to={"/"}>
-                <p className="tracking-header">TOP</p>
+                <img
+                  src="/icon.svg"
+                  alt=""
+                  className="w-10 h-10 sm:w-20 sm:h-20"
+                />
               </Link>
-            )}
+              <h1
+                className={`text-lg sm:text-2xl header-slide tracking-header ${
+                  isLoaded ? "loaded" : "loading"
+                }`}
+                style={{ color: "white" }}
+              >
+                {headingTitle()}
+              </h1>
+            </div>
+            <div className="flex items-center">
+              {pathname !== "/about" && (
+                <Link to={"/about"}>
+                  <p className="tracking-header">ABOUT</p>
+                </Link>
+              )}
+              {pathname === "/about" && (
+                <Link to={"/"}>
+                  <p className="tracking-header">TOP</p>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </header>
