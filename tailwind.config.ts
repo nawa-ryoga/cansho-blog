@@ -8,6 +8,9 @@ export default {
       colors: {
         background: {
           default: "#5B6BA2",
+          darken: {
+            1: "#4A5787",
+          },
         },
         font: {
           default: "#DADDEA",
