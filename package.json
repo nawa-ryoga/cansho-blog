@@ -14,7 +14,9 @@
     "@remix-run/vercel": "^1.19.0",
     "@types/react-transition-group": "^4.4.6",
     "@vercel/node": "^2.10.3",
+    "date-fns": "^2.30.0",
     "isbot": "^3.6.8",
+    "microcms-js-sdk": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
