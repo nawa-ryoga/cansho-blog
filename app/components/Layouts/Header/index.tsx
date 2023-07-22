@@ -39,7 +39,7 @@ export default function Header({ pageTitle }: Props) {
       >
         <div className="w-full px-4">
           <div>
-            <div className="mx-auto max-w-5xl flex items-center justify-between">
+            <div className="mx-auto max-w-3xl flex items-center justify-between">
               <div className="sm:flex items-center gap-6">
                 <Link
                   to={"/"}
