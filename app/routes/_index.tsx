@@ -11,20 +11,20 @@ export const meta: V2_MetaFunction = () => {
   return [
     { title: "CANSHO" },
     { name: "description", content: "子上ねんその映画ブログ。" },
-    { name: "og:title", content: "CANSHO" },
-    { name: "og:type", content: "website" },
-    { name: "og:url", content: "https://cansho.me" },
+    { property: "og:title", content: "CANSHO" },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://cansho.me" },
     {
-      name: "og:site_name",
+      property: "og:site_name",
       content: "CANSHO 普通に楽しんで普通に鑑賞する、子上ねんその映画ブログ",
     },
     {
-      name: "og:image",
+      property: "og:image",
       content: "/ogp.ong",
     },
-    { name: "og:twitter-card", content: "summary_large_image" },
-    { name: "og:twitter-creator", content: "@nenso_negami" },
-    { name: "og:twitter-site", content: "@nenso_negami" },
+    { property: "og:twitter-card", content: "summary_large_image" },
+    { property: "og:twitter-creator", content: "@nenso_negami" },
+    { property: "og:twitter-site", content: "@nenso_negami" },
   ];
 };
 
