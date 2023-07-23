@@ -1,5 +1,4 @@
-import type { V2_MetaFunction } from "@remix-run/node";
-import type { LoaderFunction, HeadersFunction } from "@remix-run/node";
+import type { LoaderFunction, HeadersFunction, V2_MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Link } from "@remix-run/react";
 import { getBlogList } from "~/libs/micro-cms/client.server";
@@ -9,7 +8,26 @@ import Header from "~/components/Layouts/Header";
 import Main from "~/components/Layouts/Main";
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: "CANSHO" }, { name: "description", content: "子上ねんその映画ブログ。" }];
+  return [
+    { title: "CANSHO" },
+    { name: "description", content: "子上ねんその映画ブログ" },
+    { property: "og:title", content: "CANSHO" },
+    { property: "og:description", content: "子上ねんその映画ブログ" },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://cansho.me" },
+    {
+      property: "og:site_name",
+      content: "CANSHO | 普通に楽しんで普通に鑑賞する、子上ねんその映画ブログ",
+    },
+    {
+      property: "og:image",
+      content:
+        "https://images.microcms-assets.io/assets/0857b272e30c471091c41b246557b29e/a6fbbfdd317e4645822b8101851c71ad/ogp.png",
+    },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:creator", content: "@nenso_negami" },
+    { name: "twitter:site", content: "@nenso_negami" },
+  ];
 };
 
 export const headers: HeadersFunction = () => {
@@ -42,7 +60,10 @@ export default function Index() {
                 blogs.map(
                   (blog) =>
                     blog.publishedAt && (
-                      <li className=" mb-4 group hover:text-white">
+                      <li
+                        key={blog.id}
+                        className=" mb-4 group hover:text-white"
+                      >
                         <Link
                           to={`/blogs/${blog.id}`}
                           className="flex"
