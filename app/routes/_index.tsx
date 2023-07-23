@@ -22,9 +22,9 @@ export const meta: V2_MetaFunction = () => {
       property: "og:image",
       content: "/ogp.ong",
     },
-    { property: "og:twitter-card", content: "summary_large_image" },
-    { property: "og:twitter-creator", content: "@nenso_negami" },
-    { property: "og:twitter-site", content: "@nenso_negami" },
+    { name: "twitter-card", content: "summary_large_image" },
+    { name: "twitter-creator", content: "@nenso_negami" },
+    { name: "twitter-site", content: "@nenso_negami" },
   ];
 };
 
