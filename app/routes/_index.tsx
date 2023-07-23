@@ -20,7 +20,7 @@ export const meta: V2_MetaFunction = () => {
     },
     {
       property: "og:image",
-      content: "/ogp.ong",
+      content: "/ogp.png",
     },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:creator", content: "@nenso_negami" },
@@ -58,7 +58,10 @@ export default function Index() {
                 blogs.map(
                   (blog) =>
                     blog.publishedAt && (
-                      <li key={blog.id} className=" mb-4 group hover:text-white">
+                      <li
+                        key={blog.id}
+                        className=" mb-4 group hover:text-white"
+                      >
                         <Link
                           to={`/blogs/${blog.id}`}
                           className="flex"
