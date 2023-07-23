@@ -1,5 +1,4 @@
-import type { V2_MetaFunction } from "@remix-run/node";
-import type { LoaderFunction, HeadersFunction } from "@remix-run/node";
+import type { LoaderFunction, HeadersFunction, V2_MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Link } from "@remix-run/react";
 import { getBlogList } from "~/libs/micro-cms/client.server";
@@ -59,7 +58,7 @@ export default function Index() {
                 blogs.map(
                   (blog) =>
                     blog.publishedAt && (
-                      <li className=" mb-4 group hover:text-white">
+                      <li key={blog.id} className=" mb-4 group hover:text-white">
                         <Link
                           to={`/blogs/${blog.id}`}
                           className="flex"
