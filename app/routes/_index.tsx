@@ -9,7 +9,24 @@ import Header from "~/components/Layouts/Header";
 import Main from "~/components/Layouts/Main";
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: "CANSHO" }, { name: "description", content: "子上ねんその映画ブログ。" }];
+  return [
+    { title: "CANSHO" },
+    { name: "description", content: "子上ねんその映画ブログ。" },
+    { name: "og:title", content: "CANSHO" },
+    { name: "og:type", content: "website" },
+    { name: "og:url", content: "https://cansho.me" },
+    {
+      name: "og:site_name",
+      content: "CANSHO 普通に楽しんで普通に鑑賞する、子上ねんその映画ブログ",
+    },
+    {
+      name: "og:image",
+      content: "/ogp.ong",
+    },
+    { name: "og:twitter-card", content: "summary_large_image" },
+    { name: "og:twitter-creator", content: "@nenso_negami" },
+    { name: "og:twitter-site", content: "@nenso_negami" },
+  ];
 };
 
 export const headers: HeadersFunction = () => {
