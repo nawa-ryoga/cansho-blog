@@ -65,7 +65,7 @@ export default function Header({ pageTitle }: Props) {
                     <p className="tracking-header">ABOUT</p>
                   </Link>
                 )}
-                {pathname === "/about" && (
+                {(pathname === "/about" || pathname === "/privacy") && (
                   <Link to={"/"}>
                     <p className="tracking-header">TOP</p>
                   </Link>
