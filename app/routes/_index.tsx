@@ -10,14 +10,14 @@ import Main from "~/components/Layouts/Main";
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "CANSHO" },
-    { name: "description", content: "子上ねんその映画ブログ。" },
+    { name: "description", content: "子上ねんその映画ブログ" },
     { property: "og:title", content: "CANSHO" },
-    { property: "og:description", content: "子上ねんその映画ブログ。" },
+    { property: "og:description", content: "子上ねんその映画ブログ" },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://cansho.me" },
     {
       property: "og:site_name",
-      content: "CANSHO 普通に楽しんで普通に鑑賞する、子上ねんその映画ブログ",
+      content: "CANSHO | 普通に楽しんで普通に鑑賞する、子上ねんその映画ブログ",
     },
     {
       property: "og:image",
