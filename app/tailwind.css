@@ -7,7 +7,7 @@
 @tailwind utilities;
 
 :root {
-  --header-height: 92px; /* デフォルトの値 */
+  --header-height: 132px; /* デフォルトの値 */
 }
 
 @media (min-width: 640px) {
@@ -32,7 +32,7 @@
 @keyframes slide-in {
   from {
     opacity: 0;
-    transform: translateX(-10%);
+    transform: translateX(-12px);
   }
   to {
     opacity: 1;
@@ -41,5 +41,24 @@
 }
 
 .header-slide.loaded {
-  animation: slide-in 0.4s ease;
+  animation: slide-in 0.4s ease backwards;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.content-slide {
+  animation: slide-up 0.4s 0.4s ease backwards;
+}
+
+.title-slide {
+  animation: slide-up 0.4s 0.2s ease backwards;
 }

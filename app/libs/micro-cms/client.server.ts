@@ -58,9 +58,22 @@ if (!process.env.API_KEY) {
   throw new Error("APIキーが設定されていません。");
 }
 
+if (!process.env.MOVIE_DATA_SERVICE_DOMAIN) {
+  throw new Error("映画データベースのサービスドメインが設定されていません。");
+}
+
+if (!process.env.MOVIE_DATA_API_KEY) {
+  throw new Error("映画データベースのAPIキーが設定されていません。");
+}
+
 export const client = createClient({
   serviceDomain: process.env.SERVICE_DOMAIN,
   apiKey: process.env.API_KEY,
+});
+
+export const movieDataClient = createClient({
+  serviceDomain: process.env.MOVIE_DATA_SERVICE_DOMAIN,
+  apiKey: process.env.MOVIE_DATA_API_KEY,
 });
 
 export const getBlogList = async (queries?: MicroCMSQueries) => {
@@ -74,4 +87,31 @@ export const getBlogList = async (queries?: MicroCMSQueries) => {
     });
 
   return listData;
+};
+
+export const getBlogDetail = async (contentId: string, queries?: MicroCMSQueries) => {
+  const detailData = await client
+    .getListDetail<Blog>({
+      endpoint: "blogs",
+      contentId,
+      queries,
+    })
+    .catch(() => {
+      throw new Error("記事データが取得できませんでした。");
+    });
+
+  return detailData;
+};
+
+export const getMovieData = async (contentId: string) => {
+  const movieData = await movieDataClient
+    .getListDetail<MovieData>({
+      endpoint: "movies",
+      contentId,
+    })
+    .catch(() => {
+      throw new Error("映画データが取得できませんでした。");
+    });
+
+  return movieData;
 };
