@@ -12,6 +12,7 @@ export const meta: V2_MetaFunction = () => {
     { title: "CANSHO" },
     { name: "description", content: "子上ねんその映画ブログ。" },
     { property: "og:title", content: "CANSHO" },
+    { property: "og:description", content: "子上ねんその映画ブログ。" },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://cansho.me" },
     {
