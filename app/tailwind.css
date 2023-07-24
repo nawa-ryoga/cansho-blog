@@ -8,12 +8,21 @@
 
 :root {
   --header-height: 132px; /* デフォルトの値 */
+  --color-selection-rgb: 55, 68, 115
 }
 
 @media (min-width: 640px) {
   :root {
     --header-height: 148px; /* 640px以上の画面幅の場合の値 */
   }
+}
+
+::selection {
+  background-color: rgba(var(--color-selection-rgb), 0.99);
+}
+
+::-moz-selection {
+  background-color: rgba(var(--color-selection-rgb), 0.99);
 }
 
 @layer base {
