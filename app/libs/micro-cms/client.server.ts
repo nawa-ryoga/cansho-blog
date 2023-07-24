@@ -14,7 +14,7 @@ export type Movie = {
 
 export type Blog = {
   title: string;
-  summary: string;
+  summery: string;
   content: string;
   eyecatch: MicroCMSImage;
   movies?: Movie[];
