@@ -55,8 +55,7 @@ export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
     },
     {
       property: "og:image",
-      content:
-        "https://images.microcms-assets.io/assets/0857b272e30c471091c41b246557b29e/a6fbbfdd317e4645822b8101851c71ad/ogp.png",
+      content: `${data.blog.eyecatch.url}`,
     },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:creator", content: "@nenso_negami" },
