@@ -8,7 +8,8 @@
 
 :root {
   --header-height: 132px; /* デフォルトの値 */
-  --color-selection-rgb: 55, 68, 115
+  --color-selection-rgb: 55, 68, 115;
+  --color-overlay-rgb: 30, 39, 68;
 }
 
 @media (min-width: 640px) {

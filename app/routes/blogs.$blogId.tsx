@@ -2,7 +2,6 @@ import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getBlogDetail, getMovieData } from "~/libs/micro-cms/client.server";
 import type { Blog, MovieData } from "~/libs/micro-cms/client.server";
-import Header from "~/components/Layouts/Header";
 import Main from "~/components/Layouts/Main";
 import { domPurify } from "~/libs/sanitize/client.server";
 import Content from "./blogs/components/materials/Content";
@@ -66,14 +65,22 @@ export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
 export default function BlogId() {
   const { blog, movieDataList } = useLoaderData<LoaderData>();
   return (
-    <>
-      <Header pageTitle={blog.title} />
-      <Main>
-        <Content
-          content={blog.content}
-          movies={movieDataList}
-        />
-      </Main>
-    </>
+    <Main>
+      <header>
+        <h3 className="font-bold">
+          {blog.summery}
+        </h3>
+        <div
+          className={"h-48 sm:h-96 rounded-md"}
+          style={{
+            background: `linear-gradient(rgba(var(--color-overlay-rgb),0.5), rgba(var(--color-overlay-rgb),0.5)), url(${blog.eyecatch.url}) center / cover`,
+          }}
+        ></div>
+      </header>
+      <Content
+        content={blog.content}
+        movies={movieDataList}
+      />
+    </Main>
   );
 }
