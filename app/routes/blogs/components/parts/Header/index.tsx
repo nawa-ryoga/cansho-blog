@@ -40,13 +40,13 @@ export default function Header({ pageTitle, publishedAt }: Props) {
   return (
     <>
       <header
-        className="font-zenKurenaido flex items-end pt-[104px] sm-[100px]"
+        className="font-zenKurenaido flex items-end pt-[104px] sm:pt-[100px]"
         style={{ minHeight: "var(--header-height)" }}
       >
         <div className="w-full px-4">
           <div className="mx-auto max-w-3xl ">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-6">
+              <div className="flex gap-6">
                 <Link
                   to={"/"}
                   className="aspect-square sm:w-[48px] sm:h-[48px]"
