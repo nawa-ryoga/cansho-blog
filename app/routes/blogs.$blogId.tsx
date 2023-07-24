@@ -72,7 +72,7 @@ export default function BlogId() {
         publishedAt={blog.publishedAt}
       />
       <Main>
-        <header>
+        <header className="title-slide">
           <h3 className="font-bold text-center text-xs sm:text-sm mt-4 sm:mt-8 mb-8 sm:mb-16">
             {blog.summery}
           </h3>

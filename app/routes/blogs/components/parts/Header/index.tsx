@@ -15,26 +15,12 @@ export default function Header({ pageTitle, publishedAt }: Props) {
     : format(new Date(), "MMM d");
 
   const matchs = useMatches();
-  const { pathname, id } = matchs[1];
+  const { pathname } = matchs[1];
 
   const [isLoaded, setIsLoaded] = useState(false);
-  const [nowPage, setNowPage] = useState("");
-
-  const toggleLoadedStatus = () => {
-    setIsLoaded(true);
-    setTimeout(() => {
-      setIsLoaded(false);
-    }, 200);
-  };
-
-  if (nowPage !== pathname) {
-    setNowPage(pathname);
-    toggleLoadedStatus();
-  }
 
   useEffect(() => {
-    toggleLoadedStatus();
-    setNowPage(pathname);
+    setIsLoaded(true);
   }, []);
 
   return (
@@ -58,7 +44,7 @@ export default function Header({ pageTitle, publishedAt }: Props) {
                   />
                 </Link>
                 <Title
-                  display={`hidden sm:inline`}
+                  display={`hidden sm:block`}
                   isLoaded={isLoaded}
                   pathname={pathname}
                   pageTitle={pageTitle}
@@ -67,16 +53,24 @@ export default function Header({ pageTitle, publishedAt }: Props) {
             </div>
             <div className="flex items-center gap-6">
               <div className="h-6 sm:w-12"></div>
-              <p className="hidden sm:block tracking-widest text-lg">{published}</p>
+              <p
+                className={`hidden sm:block tracking-widest header-second-slide text-lg ${
+                  isLoaded ? "loaded" : "loading"
+                }`}
+              >
+                {published}
+              </p>
             </div>
           </div>
           <Title
-            display={`inline sm:hidden`}
+            display={`block sm:hidden`}
             isLoaded={isLoaded}
             pathname={pathname}
             pageTitle={pageTitle}
           />
-          <p className="block sm:hidden">{published}</p>
+          <p className={`block sm:hidden header-second-slide ${isLoaded ? "loaded" : "loading"}`}>
+            {published}
+          </p>
         </div>
       </header>
     </>
