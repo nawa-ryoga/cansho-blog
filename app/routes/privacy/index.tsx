@@ -28,7 +28,7 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function About() {
+export default function Privacy() {
   return (
     <>
       <Header pageTitle="PRIVACY" />
