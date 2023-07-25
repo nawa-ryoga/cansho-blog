@@ -2,12 +2,12 @@ import { getBlogList } from "~/libs/micro-cms/client.server";
 
 export const loader = async () => {
   const baseUrl = "https://cansho.me";
-  const lastReleaseDate = new Date("2023-08-19");
+  const lastReleaseDate = new Date("2023-08-19").toISOString();
 
   const { contents } = await getBlogList();
   const newestBlogPublishedAt = contents[0].publishedAt;
   const topPageLastModified = newestBlogPublishedAt
-    ? new Date(newestBlogPublishedAt)
+    ? new Date(newestBlogPublishedAt).toISOString()
     : lastReleaseDate;
 
   const staticPaths = [
@@ -29,7 +29,7 @@ export const loader = async () => {
     const lastModified = blog.updatedAt ? blog.updatedAt : blog.createdAt;
     return {
       url: `${baseUrl}/blogs/${blog.id}`,
-      lastModified: new Date(lastModified),
+      lastModified: new Date(lastModified).toISOString(),
     };
   });
 
