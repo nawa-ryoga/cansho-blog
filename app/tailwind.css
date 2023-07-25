@@ -8,7 +8,8 @@
 
 :root {
   --header-height: 132px; /* デフォルトの値 */
-  --color-selection-rgb: 55, 68, 115
+  --color-selection-rgb: 55, 68, 115;
+  --color-overlay-rgb: 30, 39, 68;
 }
 
 @media (min-width: 640px) {
@@ -41,7 +42,7 @@
 @keyframes slide-in {
   from {
     opacity: 0;
-    transform: translateX(-12px);
+    transform: translateX(-1rem);
   }
   to {
     opacity: 1;
@@ -51,6 +52,21 @@
 
 .header-slide.loaded {
   animation: slide-in 0.4s ease backwards;
+}
+
+@keyframes slide-second-in {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.header-second-slide.loaded {
+  animation: slide-second-in 0.4s 0.2s ease backwards;
 }
 
 @keyframes slide-up {

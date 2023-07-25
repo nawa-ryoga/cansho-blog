@@ -6,6 +6,8 @@ type Props = {
 };
 
 export default function Title({ display, isLoaded, pathname, pageTitle }: Props) {
+  const isBlogPage = /\/blogs/;
+
   return (
     <h1
       className={`
@@ -13,6 +15,8 @@ export default function Title({ display, isLoaded, pathname, pageTitle }: Props)
         ${pathname === "/" || pathname === "/about" ? "tracking-header" : ""}
         ${isLoaded ? "loaded" : "loading"}
         ${display}
+        ${isBlogPage.test(pathname) ? "sm:pt-[0.4rem]" : ""}
+        ${isBlogPage.test(pathname) ? "mb-[0.2rem] sm:mb-[0.4rem]" : ""}
       `}
       style={{ color: "white" }}
     >

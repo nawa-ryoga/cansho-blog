@@ -52,7 +52,7 @@ export default function Header({ pageTitle }: Props) {
                   />
                 </Link>
                 <Title
-                  display={id === "routes/blogs.$blogId" ? `hidden sm:block` : `block`}
+                  display={`block`}
                   isLoaded={isLoaded}
                   pathname={pathname}
                   pageTitle={pageTitle}
@@ -72,16 +72,6 @@ export default function Header({ pageTitle }: Props) {
                 )}
               </div>
             </div>
-          </div>
-          <div className="pt-4">
-            {id === "routes/blogs.$blogId" && (
-              <Title
-                display={`block sm:hidden`}
-                isLoaded={isLoaded}
-                pathname={pathname}
-                pageTitle={pageTitle}
-              />
-            )}
           </div>
         </div>
       </header>
