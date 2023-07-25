@@ -83,7 +83,7 @@ export const getBlogList = async (queries?: MicroCMSQueries) => {
       queries,
     })
     .catch(() => {
-      throw new Error("データが取得できませんでした。")
+      throw new Error("データが取得できませんでした。");
     });
 
   return listData;
