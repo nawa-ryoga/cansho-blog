@@ -21,8 +21,8 @@ export default function Content() {
       <br />
       <span className="flex gap-4">
         <p>運営者：子上ねんそ</p>
-        <ExternalLink href="https://twitter.com/nenso_negami">
-          <p>Twitter</p>
+        <ExternalLink href="https://note.com/nenso_nagami">
+          <p>note</p>
         </ExternalLink>
       </span>
     </>
