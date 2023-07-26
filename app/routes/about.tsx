@@ -1,9 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import ReactDOMServer from "react-dom/server";
-import Header from "~/components/Layouts/Header";
-import Main from "~/components/Layouts/Main";
-import Content from "./parts/Content";
-import ContentMaterial from "../blogs/components/materials/Content";
+import About from "~/components/Routes/about";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -28,13 +24,6 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function About() {
-  return (
-    <>
-      <Header pageTitle="ABOUT" />
-      <Main>
-        <ContentMaterial content={ReactDOMServer.renderToString(Content())} />
-      </Main>
-    </>
-  );
+export default function AboutPage() {
+  return <About />;
 }
