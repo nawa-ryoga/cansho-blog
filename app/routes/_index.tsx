@@ -1,6 +1,5 @@
 import type { LoaderFunction, HeadersFunction, V2_MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { Link } from "@remix-run/react";
+import { useLoaderData, Link } from "@remix-run/react";
 import { getBlogList } from "~/libs/micro-cms/client.server";
 import type { Blog } from "~/libs/micro-cms/client.server";
 import { format } from "date-fns";
