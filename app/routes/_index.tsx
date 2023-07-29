@@ -1,6 +1,5 @@
 import type { LoaderFunction, HeadersFunction, V2_MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { Link } from "@remix-run/react";
+import { useLoaderData, Link } from "@remix-run/react";
 import { getBlogList } from "~/libs/micro-cms/client.server";
 import type { Blog } from "~/libs/micro-cms/client.server";
 import { format } from "date-fns";
@@ -68,7 +67,9 @@ export default function Index() {
                           to={`/blogs/${blog.id}`}
                           className="flex"
                         >
-                          <p className="mr-2 transition duration-200">{blog.title}</p>
+                          <p className="mr-2 transition duration-200 underline underline-offset-4 decoration-font-darken-2">
+                            {blog.title}
+                          </p>
                           <p className="text-font-darken-1 group-hover:text-white transition duration-200">
                             {format(new Date(blog.publishedAt), "MMM d")}
                           </p>
