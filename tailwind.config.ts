@@ -17,6 +17,7 @@ export default {
           default: "#DADDEA",
           darken: {
             1: "#ADB5D1",
+            2: "#9BA5C7",
           },
         },
       },

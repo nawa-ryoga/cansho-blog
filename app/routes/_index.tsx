@@ -67,7 +67,9 @@ export default function Index() {
                           to={`/blogs/${blog.id}`}
                           className="flex"
                         >
-                          <p className="mr-2 transition duration-200">{blog.title}</p>
+                          <p className="mr-2 transition duration-200 underline underline-offset-4 decoration-font-darken-2">
+                            {blog.title}
+                          </p>
                           <p className="text-font-darken-1 group-hover:text-white transition duration-200">
                             {format(new Date(blog.publishedAt), "MMM d")}
                           </p>
