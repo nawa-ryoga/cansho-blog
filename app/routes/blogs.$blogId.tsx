@@ -1,39 +1,10 @@
-import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
+import type { V2_MetaFunction, HeadersFunction, LoaderFunction } from "@vercel/remix";
+import { json } from "@vercel/remix";
 import { useLoaderData } from "@remix-run/react";
 import { getBlogDetail, getMovieData } from "~/libs/micro-cms/client.server";
 import type { Blog, MovieData } from "~/libs/micro-cms/client.server";
 import { domPurify } from "~/libs/sanitize/client.server";
 import BlogId from "~/components/Routes/blogs";
-
-type LoaderData = {
-  blog: Blog;
-  movieDataList: MovieData[];
-};
-
-export const loader = async ({ params }: LoaderArgs) => {
-  if (!params.blogId) {
-    throw new Error("ブログIDが入力されていません。");
-  }
-  const blog = await getBlogDetail(params.blogId);
-
-  const movieDataList = blog.movies
-    ? await Promise.all(
-        blog.movies.map(async (movie) => {
-          const res = await getMovieData(movie.movie_id);
-          return res;
-        }),
-      )
-    : undefined;
-  return {
-    blog: {
-      ...blog,
-      content: domPurify().sanitize(blog.content, {
-        USE_PROFILES: { html: true },
-      }),
-    },
-    movieDataList,
-  };
-};
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
   if (!data) {
@@ -61,8 +32,51 @@ export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
   ];
 };
 
+export const loader: LoaderFunction = async ({ params, request }) => {
+  if (!params.blogId) {
+    throw new Error("ブログIDが入力されていません。");
+  }
+
+  const url = new URL(request.url);
+  const draftKey = url.searchParams.get("draftKey");
+  const isDraft = draftKey ? draftKey : undefined;
+
+  const headers = draftKey ? { "Cache-Control": cacheHeader } : undefined;
+  const blog = await getBlogDetail(params.blogId, { draftKey: isDraft });
+
+  const movieDataList = blog.movies
+    ? await Promise.all(
+        blog.movies.map(async (movie) => {
+          const res = await getMovieData(movie.movie_id);
+          return res;
+        }),
+      )
+    : undefined;
+  return json(
+    {
+      blog: {
+        ...blog,
+        content: domPurify().sanitize(blog.content, {
+          USE_PROFILES: { html: true },
+        }),
+      },
+      movieDataList,
+    },
+    { headers },
+  );
+};
+
+const cacheHeader = "max-age=0, s-maxage=60, stale-while-revalidate=60";
+
+export const headers: HeadersFunction = ({ loaderHeaders }) => {
+  const cacheControl = loaderHeaders.get("Cache-Control") ?? cacheHeader;
+  return {
+    "Cache-Control": cacheControl,
+  };
+};
+
 export default function BlogDetail() {
-  const { blog, movieDataList } = useLoaderData<LoaderData>();
+  const { blog, movieDataList } = useLoaderData<{ blog: Blog; movieDataList: MovieData[] }>();
   return (
     <BlogId
       blog={blog}

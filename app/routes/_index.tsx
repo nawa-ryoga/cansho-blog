@@ -1,4 +1,5 @@
-import type { LoaderFunction, HeadersFunction, V2_MetaFunction } from "@remix-run/node";
+import type { V2_MetaFunction, HeadersFunction, LoaderFunction } from "@vercel/remix";
+import { json } from "@vercel/remix";
 import { useLoaderData, Link } from "@remix-run/react";
 import { getBlogList } from "~/libs/micro-cms/client.server";
 import type { Blog } from "~/libs/micro-cms/client.server";
@@ -29,19 +30,28 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export const headers: HeadersFunction = () => {
+const cacheHeader = "max-age=0, s-maxage=60, stale-while-revalidate=60";
+
+export const headers: HeadersFunction = ({ loaderHeaders }) => {
+  const cacheControl = loaderHeaders.get("Cache-Control") ?? cacheHeader;
   return {
-    "Cache-Control": "max-age=0, s-maxage=300, stale-while-revalidate=300",
+    "Cache-Control": cacheControl,
   };
 };
 
-export const loader: LoaderFunction = async () => {
-  const { contents } = await getBlogList();
-  return contents;
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const draftKey = url.searchParams.get("draftKey");
+  const isDraft = draftKey ? draftKey : undefined;
+
+  const { contents } = await getBlogList({ draftKey: isDraft });
+  const headers = draftKey ? { "Cache-Control": cacheHeader } : undefined;
+  return json({ contents }, { headers });
 };
 
 export default function Index() {
-  const blogs = useLoaderData<Blog[]>();
+  const data = useLoaderData<{ contents: Blog[] }>();
+  const blogs = data.contents;
 
   return (
     <>
