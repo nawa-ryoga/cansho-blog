@@ -78,13 +78,13 @@ export default function Index() {
                     blog.publishedAt && (
                       <li
                         key={blog.id}
-                        className="mb-8 group hover:text-white"
+                        className="mb-8 group"
                       >
                         <Link
                           to={`/blogs/${blog.id}`}
                           className="flex flex-col gap-2 visited:text-font-darken-2"
                         >
-                          <p className="transition duration-200 underline underline-offset-4 decoration-font-darken-2">
+                          <p className="transition duration-200 group-hover:text-white underline underline-offset-4 decoration-font-darken-2">
                             {blog.title}
                           </p>
                           <p className="text-font-darken-1 group-hover:text-white transition duration-200 col-span-1">
