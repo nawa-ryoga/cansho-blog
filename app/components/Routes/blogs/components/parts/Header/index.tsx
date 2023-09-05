@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useMatches } from "@remix-run/react";
-import { Link } from "@remix-run/react";
+import { useMatches, Link } from "@remix-run/react";
 import Title from "~/components/Layouts/Header/parts/Title";
 import { format } from "date-fns";
 
