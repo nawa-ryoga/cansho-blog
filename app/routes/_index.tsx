@@ -63,7 +63,7 @@ export default function Index() {
           </h2>
           <p className="text-sm">ブログを書くまでが映画鑑賞です</p>
 
-          <div className="mt-10 sm:mt-14 content-slide">
+          <div className="pt-16 sm:pt-24 sm:max-w-2xl content-slide">
             <ul>
               {blogs.length >= 1 &&
                 blogs.map(
@@ -71,17 +71,17 @@ export default function Index() {
                     blog.publishedAt && (
                       <li
                         key={blog.id}
-                        className=" mb-4 group hover:text-white"
+                        className="mb-8 group hover:text-white"
                       >
                         <Link
                           to={`/blogs/${blog.id}`}
-                          className="flex"
+                          className="flex flex-col gap-2 visited:text-font-darken-2"
                         >
-                          <p className="mr-2 transition duration-200 underline underline-offset-4 decoration-font-darken-2">
+                          <p className="transition duration-200 underline underline-offset-4 decoration-font-darken-2">
                             {blog.title}
                           </p>
-                          <p className="text-font-darken-1 group-hover:text-white transition duration-200">
-                            {format(new Date(blog.publishedAt), "MMM d")}
+                          <p className="text-font-darken-1 group-hover:text-white transition duration-200 col-span-1">
+                            {format(new Date(blog.publishedAt), "yy MMM d")}
                           </p>
                         </Link>
                       </li>
