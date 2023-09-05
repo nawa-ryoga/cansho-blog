@@ -6,6 +6,8 @@ import type {
   MicroCMSContentId,
 } from "microcms-js-sdk";
 
+require("dotenv").config();
+
 export type Movie = {
   fieldId: string;
   movie_id: string;
