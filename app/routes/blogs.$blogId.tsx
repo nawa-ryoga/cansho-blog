@@ -54,17 +54,19 @@ export const loader: LoaderFunction = async ({ params, request }) => {
     throw new Error("記事が見つかりませんでした。");
   }
 
-  const movieDataList = blog.movies
-    ? blog.movies.map(async (movie) => {
+const movieDataList = blog.movies
+  ? await Promise.all(
+      blog.movies.map(async (movie) => {
         const data = movies.find((m) => movie.movie_id === m.id);
         if (data) {
           return data;
         } else {
-          const data = await (async () => await getMovieData(movie.movie_id))();
+          const data = await getMovieData(movie.movie_id);
           return data;
         }
-      })
-    : undefined;
+      }),
+    )
+  : undefined;
 
   return json(
     {
