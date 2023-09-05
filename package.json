@@ -2,8 +2,9 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "pnpm run build:contents && remix build",
+    "build": "pnpm run build:contents && pnpm run build:movies && remix build",
     "build:contents": "ts-node --project tsconfig.builder.json ./app/builder/contents.ts",
+    "build:movies": "ts-node --project tsconfig.builder.json ./app/builder/movies.ts",
     "dev": "remix dev",
     "typecheck": "tsc",
     "format": "prettier --write app"

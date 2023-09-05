@@ -105,6 +105,18 @@ export const getBlogDetail = async (contentId: string, queries?: MicroCMSQueries
   return detailData;
 };
 
+export const getMovieList = async () => {
+  const listData = await movieDataClient
+    .getList<Movie>({
+      endpoint: "movies",
+    })
+    .catch(() => {
+      throw new Error("映画データ一覧が取得できませんでした。");
+    });
+
+  return listData;
+}
+
 export const getMovieData = async (contentId: string) => {
   const movieData = await movieDataClient
     .getListDetail<MovieData>({
