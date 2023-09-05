@@ -6,6 +6,7 @@ import type { Blog } from "~/libs/micro-cms/client.server";
 import { format } from "date-fns";
 import Header from "~/components/Layouts/Header";
 import Main from "~/components/Layouts/Main";
+import blogs from ".contents/blogs.json";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -44,7 +45,13 @@ export const loader: LoaderFunction = async ({ request }) => {
   const draftKey = url.searchParams.get("draftKey");
   const isDraft = draftKey ? draftKey : undefined;
 
-  const { contents } = await getBlogList({ draftKey: isDraft });
+  const contents = blogs
+    ? blogs
+    : await (async () => {
+        const { contents } = await getBlogList({ draftKey: isDraft });
+        return contents;
+    })();
+
   const headers = draftKey ? { "Cache-Control": cacheHeader } : undefined;
   return json({ contents }, { headers });
 };
@@ -71,13 +78,13 @@ export default function Index() {
                     blog.publishedAt && (
                       <li
                         key={blog.id}
-                        className="mb-8 group hover:text-white"
+                        className="mb-8 group"
                       >
                         <Link
                           to={`/blogs/${blog.id}`}
                           className="flex flex-col gap-2 visited:text-font-darken-2"
                         >
-                          <p className="transition duration-200 underline underline-offset-4 decoration-font-darken-2">
+                          <p className="transition duration-200 group-hover:text-white underline underline-offset-4 decoration-font-darken-2">
                             {blog.title}
                           </p>
                           <p className="text-font-darken-1 group-hover:text-white transition duration-200 col-span-1">
