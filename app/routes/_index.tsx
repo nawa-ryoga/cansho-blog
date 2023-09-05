@@ -6,6 +6,7 @@ import type { Blog } from "~/libs/micro-cms/client.server";
 import { format } from "date-fns";
 import Header from "~/components/Layouts/Header";
 import Main from "~/components/Layouts/Main";
+import blogs from ".contents/blogs.json";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -44,7 +45,13 @@ export const loader: LoaderFunction = async ({ request }) => {
   const draftKey = url.searchParams.get("draftKey");
   const isDraft = draftKey ? draftKey : undefined;
 
-  const { contents } = await getBlogList({ draftKey: isDraft });
+  const contents = blogs
+    ? blogs
+    : (async () => {
+        const { contents } = await getBlogList({ draftKey: isDraft });
+        return contents;
+      })();
+
   const headers = draftKey ? { "Cache-Control": cacheHeader } : undefined;
   return json({ contents }, { headers });
 };

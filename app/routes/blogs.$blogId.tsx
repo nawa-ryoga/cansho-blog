@@ -5,6 +5,7 @@ import { getBlogDetail, getMovieData } from "~/libs/micro-cms/client.server";
 import type { Blog, MovieData } from "~/libs/micro-cms/client.server";
 import { domPurify } from "~/libs/sanitize/client.server";
 import BlogId from "~/components/Routes/blogs";
+import blogs from ".contents/blogs.json";
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
   if (!data) {
@@ -40,9 +41,18 @@ export const loader: LoaderFunction = async ({ params, request }) => {
   const url = new URL(request.url);
   const draftKey = url.searchParams.get("draftKey");
   const isDraft = draftKey ? draftKey : undefined;
+  const blogId = params.blogId;
 
   const headers = draftKey ? { "Cache-Control": cacheHeader } : undefined;
-  const blog = await getBlogDetail(params.blogId, { draftKey: isDraft });
+  // const blog = await getBlogDetail(params.blogId, { draftKey: isDraft });
+
+  const blog = isDraft
+    ? await getBlogDetail(blogId, { draftKey: isDraft })
+    : blogs.find((b) => b.id === blogId);
+  
+  if (!blog) {
+    throw new Error("記事が見つかりませんでした。");
+  }
 
   const movieDataList = blog.movies
     ? await Promise.all(
