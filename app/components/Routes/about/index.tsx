@@ -7,7 +7,10 @@ import ContentMaterial from "../blogs/components/materials/Content";
 export default function About() {
   return (
     <>
-      <Header pageTitle="ABOUT" />
+      <Header
+        pageTitle="ABOUT"
+        internalLink={{ to: "/", text: "TOP" }}
+      />
       <Main>
         <ContentMaterial content={ReactDOMServer.renderToString(Content())} />
       </Main>

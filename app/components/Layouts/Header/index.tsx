@@ -1,36 +1,15 @@
-import { useEffect, useState } from "react";
-import { useMatches } from "@remix-run/react";
 import { Link } from "@remix-run/react";
 import Title from "./parts/Title";
 
 type Props = {
   pageTitle: string;
+  internalLink?: {
+    to: "/about" | "/";
+    text: "ABOUT" | "TOP";
+  };
 };
 
-export default function Header({ pageTitle }: Props) {
-  const matchs = useMatches();
-  const { pathname, id } = matchs[1];
-
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [nowPage, setNowPage] = useState("");
-
-  const toggleLoadedStatus = () => {
-    setIsLoaded(true);
-    setTimeout(() => {
-      setIsLoaded(false);
-    }, 200);
-  };
-
-  if (nowPage !== pathname) {
-    setNowPage(pathname);
-    toggleLoadedStatus();
-  }
-
-  useEffect(() => {
-    toggleLoadedStatus();
-    setNowPage(pathname);
-  }, []);
-
+export default function Header({ pageTitle, internalLink }: Props) {
   return (
     <>
       <header
@@ -38,40 +17,30 @@ export default function Header({ pageTitle }: Props) {
         style={{ minHeight: "var(--header-height)", height: "auto" }}
       >
         <div className="w-full px-4">
-          <div>
-            <div className="mx-auto max-w-3xl flex items-center justify-between">
-              <div className="flex items-center gap-6">
-                <Link
-                  to={"/"}
-                  className="aspect-square"
-                >
-                  <img
-                    src="/icon.svg"
-                    alt=""
-                    className="w-6 h-6 sm:w-12 sm:h-12"
-                  />
-                </Link>
-                <Title
-                  display={`block`}
-                  isLoaded={isLoaded}
-                  pathname={pathname}
-                  pageTitle={pageTitle}
+          <div className="mx-auto max-w-3xl flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <Link
+                to={"/"}
+                className="aspect-square"
+              >
+                <img
+                  src="/icon.svg"
+                  alt=""
+                  className="w-6 h-6 sm:w-12 sm:h-12"
                 />
-              </div>
-              <div className="flex items-center content-slide">
-                {/* TODO: 呼び出し側から流し込む */}
-                {pathname === "/" && (
-                  <Link to={"/about"}>
-                    <p className="tracking-header">ABOUT</p>
-                  </Link>
-                )}
-                {(pathname === "/about" || pathname === "/privacy") && (
-                  <Link to={"/"}>
-                    <p className="tracking-header">TOP</p>
-                  </Link>
-                )}
-              </div>
+              </Link>
+              <Title
+                display={`block`}
+                pageTitle={pageTitle}
+              />
             </div>
+            {internalLink && (
+              <div className="flex items-center content-slide">
+                <Link to={internalLink.to}>
+                  <p className="tracking-header">{internalLink.text}</p>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </header>
