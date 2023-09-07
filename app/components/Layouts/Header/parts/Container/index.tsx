@@ -24,8 +24,8 @@ export default function HeaderContainer({
     >
       <div className="w-full px-4">
         <div className="mx-auto max-w-3xl">
-          <div className="mx-auto max-w-3xl flex items-center justify-between">
-            <div className="flex items-center gap-6">
+          <div className="mx-auto max-w-3xl flex items-center">
+            <div className="flex justify-between gap-6">
               {logoMark}
               <Title
                 display={`block`}
