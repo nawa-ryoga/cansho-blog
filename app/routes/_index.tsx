@@ -50,7 +50,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     : await (async () => {
         const { contents } = await getBlogList({ draftKey: isDraft });
         return contents;
-    })();
+      })();
 
   const headers = draftKey ? { "Cache-Control": cacheHeader } : undefined;
   return json({ contents }, { headers });
@@ -62,7 +62,10 @@ export default function Index() {
 
   return (
     <>
-      <Header pageTitle="CANSHO" />
+      <Header
+        pageTitle="CANSHO"
+        internalLink={{ to: "/about", text: "ABOUT" }}
+      />
       <Main>
         <div className="mt-4 sm:mt-8 title-slide">
           <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">

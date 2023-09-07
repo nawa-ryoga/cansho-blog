@@ -7,7 +7,10 @@ import ContentMaterial from "../blogs/components/materials/Content";
 export default function Privacy() {
   return (
     <>
-      <Header pageTitle="PRIVACY" />
+      <Header
+        pageTitle="PRIVACY"
+        internalLink={{ to: "/", text: "TOP" }}
+      />
       <Main>
         <ContentMaterial content={ReactDOMServer.renderToString(Content())} />
       </Main>
