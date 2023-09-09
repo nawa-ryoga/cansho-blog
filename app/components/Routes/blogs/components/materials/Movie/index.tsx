@@ -17,7 +17,7 @@ export default function Movie({ movie }: Props) {
   return (
     <aside>
       <figure
-        className="rounded-md mt-12 sm:mt-16 px-6 sm:px-12 pb-4 sm:pb-6 pt-6 sm:pt-8"
+        className="rounded-md my-12 sm:my-16 px-6 sm:px-12 pb-4 sm:pb-6 pt-6 sm:pt-8"
         style={{
           background: `
           linear-gradient(rgba(3, 8, 28, 0.8), rgba(3, 8, 28, 0.8)),
