@@ -24,7 +24,7 @@ export default function BlogId({ blog, movieDataList }: Props) {
           </h3>
           <img
             className="h-48 sm:h-96 w-full rounded-md object-cover"
-            srcSet={`${EYECATCH_SRC}?w=320 320w, ${EYECATCH_SRC}?w=570 570w`}
+            srcSet={`${EYECATCH_SRC}?w=340 340w, ${EYECATCH_SRC}?w=730 730w`}
             src={EYECATCH_SRC}
             alt=""
           />
